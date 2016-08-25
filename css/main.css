@@ -3,6 +3,7 @@ header{
     color: Red;
     font-size: 35px;
     border: 1px solid black;
+    margin-right: 20px;
     }
 #question-status {
     background-color:steelblue;
