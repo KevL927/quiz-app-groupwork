@@ -56,10 +56,42 @@ $(document).ready(function(){
 
   var questionAndAnswer10 = {
     question: 'On which day did God create the sky?',
-    multipleChoice: [1,6,7,5],
+    multipleChoice: [1,6,7,2],
     answer: 2
   }
 
-  var question = [questionAndAnswer1, questionAndAnswer2, questionAndAnswer3, questionAndAnswer4, questionAndAnswer5, questionAndAnswer6, questionAndAnswer7, questionAndAnswer8, questionAndAnswer9, questionAndAnswer10];
+  var questions = [questionAndAnswer1, questionAndAnswer2, questionAndAnswer3, questionAndAnswer4, questionAndAnswer5, questionAndAnswer6, questionAndAnswer7, questionAndAnswer8, questionAndAnswer9, questionAndAnswer10];
+
+  $('.start-button').click(function(event){
+    event.preventDefault();
+    $('#welcome-screen').hide();
+    $('#question-answer-box').show();
+    $('#correct-incorrect-status').show();
+    $('#question-view').show();
+    $('#answer-view').show();
+    $('#question-status').show();
+
+    shuffleArray(questions);
+   
+  });
+
+  function shuffleArray(arr){
+    shuffledArr = arr.sort(function(){return Math.round(Math.random());});
+    questionReceiver(shuffledArr);
+  }
+
+  function questionReceiver(questionSet) {
+    populateQuesAndAns(questionSet.shift());
+  }
+
+  function populateQuesAndAns(eachQuestion) {
+   
+    $('#question-view').text(eachQuestion.question);
+    for(var i = 0; i < eachQuestion.multipleChoice.length; i++) {
+      $('.choice' + i).text(eachQuestion.multipleChoice[i]);
+    }
+    
+  }
+
 
 });
